@@ -1,0 +1,21 @@
+<div class="panel w-25" style="height: 10px;" >
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+<div class="container">
+  <div class="row">
+    <nav class="col-sm-3" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked">
+        {{album.name}}
+        <li><a href="#section1">Section 1</a></li>
+      </ul>
+    </nav>
+    <div class="col-sm-9" *ngFor="let song of album.songs">
+      <div id="section1">
+        <h1>{{song.name}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</div>

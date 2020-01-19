@@ -1,0 +1,16 @@
+<div class="card mb-3">
+  <h1>{{artist.name}}</h1>
+  <div class="card-body">
+    <div *ngIf="artist.genres">
+    <tr *ngFor="let genre of artist.genres">
+      <span class="badge badge-secondary">{{genre}}</span>
+    </tr>
+    </div>
+    <h2>Albums</h2>
+    <div class="align-content-center row">
+    <tr *ngFor="let album of artist.albums">
+      <app-album [album]="album"></app-album>
+    </tr>
+    </div>
+  </div>
+</div>

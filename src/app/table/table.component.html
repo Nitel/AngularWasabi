@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center">
+  <button (click)="getArtistsByLetter('A')">A</button>
+  <button (click)="getArtistsByLetter('B')">B</button>
+  <button (click)="getArtistsByLetter('C')">C</button>
+  <button (click)="getArtistsByLetter('D')">D</button>
+  <button (click)="getArtistsByLetter('E')">E</button>
+  <button (click)="getArtistsByLetter('F')">F</button>
+  <button (click)="getArtistsByLetter('G')">G</button>
+  <button (click)="getArtistsByLetter('H')">H</button>
+  <button (click)="getArtistsByLetter('I')">I</button>
+  <button (click)="getArtistsByLetter('J')">J</button>
+  <button (click)="getArtistsByLetter('K')">K</button>
+  <button (click)="getArtistsByLetter('L')">L</button>
+  <button (click)="getArtistsByLetter('M')">M</button>
+  <button (click)="getArtistsByLetter('N')">N</button>
+  <button (click)="getArtistsByLetter('O')">O</button>
+  <button (click)="getArtistsByLetter('P')">P</button>
+  <button (click)="getArtistsByLetter('Q')">Q</button>
+  <button (click)="getArtistsByLetter('R')">R</button>
+  <button (click)="getArtistsByLetter('S')">S</button>
+  <button (click)="getArtistsByLetter('T')">T</button>
+  <button (click)="getArtistsByLetter('U')">U</button>
+  <button (click)="getArtistsByLetter('V')">V</button>
+  <button (click)="getArtistsByLetter('W')">W</button>
+  <button (click)="getArtistsByLetter('X')">X</button>
+  <button (click)="getArtistsByLetter('Y')">Y</button>
+  <button (click)="getArtistsByLetter('Z')">Z</button>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Name
+    </th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let artist of artists">
+    <div (click)="toArtist(artist._id)">
+    <td>
+      {{ artist.name }}
+    </td>
+    </div>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2" >
+  <ngb-pagination [collectionSize]="artists.length" [(page)]="page" [pageSize]="pageSize" (pageChange)="onSearch()">
+  </ngb-pagination>
+</div>
