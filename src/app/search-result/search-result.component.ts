@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ReloadServiceService} from '../reload-service.service';
 import {SearchResultModel} from '../../model/searchResult.model';
 import {Result} from '../../model/result';
+import * as firebase from 'firebase';
+import DataSnapshot = firebase.database.DataSnapshot;
 
 @Component({
   selector: 'app-search-result',
@@ -13,6 +15,7 @@ import {Result} from '../../model/result';
 })
 export class SearchResultComponent implements OnInit {
   list: Array<Result> = [];
+  listPersist: Array<string> = [];
   field: string;
 
   // tslint:disable-next-line:max-line-length
@@ -21,6 +24,7 @@ export class SearchResultComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getSearch();
     this.route.queryParams.subscribe(queryParams => {
       this.field = this.route.snapshot.params.field;
       this.Search();
@@ -39,6 +43,14 @@ export class SearchResultComponent implements OnInit {
         result.forEach( element =>
           this.list.push(new Result(element.name, element.picture))));
 
+  }
+
+  getSearch() {
+    firebase.database().ref('/search')
+      .on('value', (data: DataSnapshot) => {
+          this.listPersist = data.val() ? data.val() : [];
+        }
+      );
   }
 
 }

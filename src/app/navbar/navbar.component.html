@@ -27,7 +27,10 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup)="onKey($event)" >
+      <input list="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup)="onKey($event)" (focus)="focusFunction()">
+      <datalist id="search">
+        <option *ngFor="let item of listSearch; let index = index" value="{{item}}">
+      </datalist>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSearch()">Search</button>
     </form>
   </div>
